@@ -29,3 +29,17 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.cities-item {
+  display: flex;
+  justify-content: center;
+  background-color: #33333399;
+  color: antiquewhite;
+  margin: 1em 0;
+  padding: 1em;
+  cursor: pointer;
+  transition: opacity 0.7s;
+}
+.cities-item:hover {
+  opacity: 0.2;
+}
