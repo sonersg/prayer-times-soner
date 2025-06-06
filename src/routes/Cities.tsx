@@ -1,10 +1,18 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { iller } from '../assets/iller';
 
 function Cities() {
+  const navigate = useNavigate();
+
   function handleClick(city: string, lat: number | null, lon: number | null) {
     console.log(city, lat, lon);
-    alert(city);
+    if (city && lat && lon) {
+      localStorage.setItem('lat', lat?.toString());
+      localStorage.setItem('lon', lon?.toString());
+      localStorage.setItem('current-city', city);
+      // alert(city);
+      navigate('/');
+    }
   }
 
   return (

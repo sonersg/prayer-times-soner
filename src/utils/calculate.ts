@@ -22,10 +22,10 @@ const timeZone = new Date().getTimezoneOffset() / -60;
 export default function calculateArray(size: number, start: number = 0) {
   console.log('Calculate function called', timeZone);
 
-  // const lat = storage.getNumber('lat') || 0;
-  // const lon = storage.getNumber('lon') || 0;
-  const lat = 37.066;
-  const lon = 37.3781;
+  const lat = localStorage.getItem('lat') || 37.066;
+  const lon = localStorage.getItem('lon') || 37.3781;
+  // const lat = 37.066;
+  // const lon = 37.3781;
 
   // if (lat === -111 && lon === -111) return [[], ['--', '--']];
 

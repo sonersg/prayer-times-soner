@@ -15,16 +15,13 @@ function PrayerTimesTable() {
     return (
       <div>
         {prayerTimeLabels.map((label, index) => (
-          <div
-            key={index}
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: 222,
-            }}
-          >
-            <h2 className='left'>{label}</h2>
-            <h2 className='right'>{arr[0][index]}</h2>
+          <div key={index} className='time-cell'>
+            <h2>{label}</h2>
+            <section>
+              {/* <h2>{bell[index] === '1' ? '🔔' : '⚫️'}</h2> */}
+              <h4>:</h4>
+              <h2>{arr[0][index]}</h2>
+            </section>
           </div>
         ))}
       </div>

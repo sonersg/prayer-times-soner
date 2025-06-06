@@ -42,6 +42,30 @@ body {
   cursor: pointer;
   transition: opacity 0.7s;
 }
-.cities-item:hover {
+.cities-item:active {
   opacity: 0.2;
+}
+
+.time-cell {
+  display: flex;
+  justify-content: space-between;
+  /* width: 222px; */
+  color: antiquewhite;
+  background-color: #33333399;
+  border-radius: 1em;
+  padding: 0.7em 1.3em;
+  transition: opacity 0.7s;
+  align-items: center;
+  cursor: pointer;
+}
+.time-cell:hover {
+  opacity: 0.2;
+}
+
+.time-cell > section {
+  display: flex;
+  align-items: center;
+}
+.time-cell > section > h4 {
+  padding: 0 1em;
 }
