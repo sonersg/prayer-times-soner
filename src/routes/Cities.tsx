@@ -8,15 +8,22 @@ function Cities() {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        flexGrow: 1,
+        flexDirection: 'column',
+        textAlign: 'center',
+        // backgroundColor: 'aqua',
+      }}
+    >
       <h1>Cities</h1>
       <div
         className='scroll-view'
         style={{
           overflow: 'auto',
-          maxHeight: '88vh',
-          width: '66%',
-          margin: '0 auto',
+          flex: 1,
+          margin: '11px 0',
         }}
       >
         {iller.map((il, index) => (

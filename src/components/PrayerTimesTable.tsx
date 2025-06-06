@@ -20,8 +20,7 @@ function PrayerTimesTable() {
             style={{
               display: 'flex',
               justifyContent: 'space-between',
-              maxWidth: 222,
-              margin: '0 auto',
+              width: 222,
             }}
           >
             <h2 className='left'>{label}</h2>
