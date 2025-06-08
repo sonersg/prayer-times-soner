@@ -22,7 +22,8 @@ function Cities() {
         flexGrow: 1,
         flexDirection: 'column',
         textAlign: 'center',
-        // backgroundColor: 'aqua',
+        maxWidth: 444,
+        margin: '0 auto',
       }}
     >
       <h1>Cities</h1>
@@ -31,7 +32,7 @@ function Cities() {
         style={{
           overflow: 'auto',
           flex: 1,
-          margin: '11px 0',
+          margin: '1em 0',
         }}
       >
         {iller.map((il, index) => (

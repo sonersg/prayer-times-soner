@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import PrayerTimesTable from '../components/PrayerTimesTable';
 import { useEffect, useState } from 'react';
+import Calendar from '../components/Calendar';
 
 function Home() {
   const [city, setcity] = useState('Go to cities');
@@ -9,7 +10,7 @@ function Home() {
     const timeout = setTimeout(() => {
       const currentCity = localStorage.getItem('current-city');
       if (currentCity) setcity(currentCity);
-    }, 444);
+    }, 777);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -23,10 +24,10 @@ function Home() {
         flexDirection: 'column',
         backgroundColor: '#55555533',
         borderRadius: 11,
-        // height: '99vh',
       }}
     >
       <h1>Home</h1>
+      <Calendar />
       <PrayerTimesTable />
       <Link to='/cities'>
         <h2>{city}</h2>
