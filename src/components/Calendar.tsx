@@ -30,7 +30,7 @@ function Calendar() {
 
 export default memo(Calendar);
 
-function getTime() {
+export function getTime() {
   const date = new Date();
   let hour: number | string = date.getHours();
   let minutes: number | string = date.getMinutes();

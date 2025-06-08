@@ -1,19 +1,17 @@
-import moment from 'moment-timezone';
-import { storage } from '../app/(screens)/_layout';
-import calculateArray from './calculate';
+import { getTime } from '../components/Calendar';
 
-const ishaMessage =
-  storage.getString('isha-message') || `Güneş: ${calculateArray(2)[1][1]}`;
-const isAlways = storage.getBoolean('is-always');
+// const ishaMessage =
+//   storage.getString('isha-message') || `Güneş: ${calculateArray(2)[1][1]}`;
+// const isAlways = storage.getBoolean('is-always');
 
 export function getRemaining(todaySarray: string[]) {
-  if (todaySarray.length < 6) return 'ah sana array';
-  if (!isAlways && isAlways != undefined) return ishaMessage;
+  //   if (!todaySarray) return 'ah sana array';
+  //   if (!isAlways && isAlways != undefined) return ishaMessage;
 
-  const currentTime = moment().format('HH:mm');
+  const currentTime = getTime();
   const currentTimeValue = +currentTime.replace(':', '');
   const ishaTimeValue = +todaySarray[5].replace(':', '');
-  if (currentTimeValue > ishaTimeValue) return ishaMessage;
+  if (currentTimeValue > ishaTimeValue) return 'ishaMessage';
 
   for (let i = 0; i < todaySarray.length; i++) {
     const prayerTimeValue = +todaySarray[i].replace(':', '');
@@ -35,24 +33,25 @@ export function getRemaining(todaySarray: string[]) {
       return `${hoursLeft}:${minutesLeft}`;
     }
   }
+  return '--';
 }
 
-export function getHighlightedIndex(todaySarray: string[]) {
-  if (todaySarray.length < 6) return -1;
+// export function getHighlightedIndex(todaySarray: string[]) {
+//   if (todaySarray.length < 6) return -1;
 
-  const currentTime = moment().format('HH:mm');
-  const currentTimeValue = +currentTime.replace(':', '');
-  const ishaTimeValue = +todaySarray[5].replace(':', '');
-  if (currentTimeValue >= ishaTimeValue) return -1;
+//   const currentTime = moment().format('HH:mm');
+//   const currentTimeValue = +currentTime.replace(':', '');
+//   const ishaTimeValue = +todaySarray[5].replace(':', '');
+//   if (currentTimeValue >= ishaTimeValue) return -1;
 
-  for (let i = 0; i < todaySarray.length; i++) {
-    const prayerTimeValue = +todaySarray[i].replace(':', '');
-    if (currentTimeValue <= prayerTimeValue) return i;
-  }
-}
+//   for (let i = 0; i < todaySarray.length; i++) {
+//     const prayerTimeValue = +todaySarray[i].replace(':', '');
+//     if (currentTimeValue <= prayerTimeValue) return i;
+//   }
+// }
 
 export function getTouched(touched: string) {
-  const currentTime = moment().format('HH:mm');
+  const currentTime = getTime();
 
   const [currentHours, currentMinutes] = currentTime.split(':');
   const [touchedHours, touchedMinutes] = touched.split(':');
