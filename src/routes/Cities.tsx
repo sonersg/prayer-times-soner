@@ -1,17 +1,35 @@
 import { Link, useNavigate } from 'react-router';
 import { iller } from '../assets/iller';
+import getLocation from '../utils/location';
 
 function Cities() {
   const navigate = useNavigate();
 
-  function handleClick(city: string, lat: number | null, lon: number | null) {
-    console.log(city, lat, lon);
+  async function handleClick(
+    city: string,
+    lat: number | null,
+    lon: number | null
+  ) {
+    // console.log(city, lat, lon);
     if (city && lat && lon) {
       localStorage.setItem('lat', lat?.toString());
       localStorage.setItem('lon', lon?.toString());
       localStorage.setItem('current-city', city);
-      // alert(city);
-      navigate('/');
+      navigate(-1);
+    }
+    if (city === 'Auto Locate') {
+      const { res, latitude, longitude, accuracy } = await getLocation();
+      if (res === 'success') {
+        alert(
+          `Latitude: ${latitude}\nLongitude: ${longitude}\nAccurasy: ${accuracy}`
+        );
+        localStorage.setItem('lat', latitude?.toString());
+        localStorage.setItem('lon', longitude?.toString());
+        localStorage.setItem('current-city', 'Auto Located');
+        navigate(-1);
+      } else {
+        alert(res);
+      }
     }
   }
 
@@ -28,7 +46,6 @@ function Cities() {
     >
       <h1>Cities</h1>
       <div
-        className='scroll-view'
         style={{
           overflow: 'auto',
           flex: 1,

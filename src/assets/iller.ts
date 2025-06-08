@@ -1,4 +1,11 @@
 export const iller = [
+  {
+    name: 'Auto Locate',
+    code: '🌎',
+    sponsor: '',
+    latitude: null,
+    longitude: null,
+  },
   { name: '--', code: '--', sponsor: '--', latitude: null, longitude: null },
   {
     name: 'Adana',
