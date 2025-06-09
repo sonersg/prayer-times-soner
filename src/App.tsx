@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import Home from './routes/Home';
 import Cities from './routes/Cities';
 import MainLayout from './routes/MainLayout';
+import Settings from './routes/Settings';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path='/' element={<Home />} />
           <Route path='/cities' element={<Cities />} />
+          <Route path='/settings' element={<Settings />} />
         </Route>
       </Routes>
     </BrowserRouter>

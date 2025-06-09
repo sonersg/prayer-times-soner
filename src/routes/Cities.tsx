@@ -64,7 +64,9 @@ function Cities() {
           </div>
         ))}
       </div>
-      <Link to='/'>Go Home</Link>
+      <Link to='/'>
+        <span className='link-btn'>Go Home</span>
+      </Link>
     </div>
   );
 }

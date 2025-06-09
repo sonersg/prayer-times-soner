@@ -71,11 +71,13 @@ body {
   padding: 0 1em;
 }
 
-a {
-  text-decoration: none;
+.link-btn {
   background-color: aqua;
   padding: 0.5em 1.5em;
   border-radius: 0.5em;
+}
+a {
+  text-decoration: none;
 }
 
 .calendar-main {
@@ -121,4 +123,16 @@ a {
 .highlight {
   color: #ffffff;
   background-color: #350068;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* background-color: aqua; */
+  width: 100%;
+}
+.top-bar span {
+  font-size: 1.7rem;
+  color: white;
 }
