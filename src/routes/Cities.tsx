@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { iller } from '../assets/iller';
 import getLocation from '../utils/location';
 
@@ -39,17 +39,20 @@ function Cities() {
         display: 'flex',
         flexGrow: 1,
         flexDirection: 'column',
-        textAlign: 'center',
-        maxWidth: 444,
-        margin: '0 auto',
+        justifyContent: 'center',
+        alignItems: 'center',
+        // padding: '1em',
+        backgroundColor: '#99999977',
       }}
     >
       <h1>Cities</h1>
       <div
         style={{
           overflow: 'auto',
-          flex: 1,
-          margin: '1em 0',
+          // flex: 1,
+          // padding: '2em 2em',
+          height: '77vh',
+          minWidth: '66%',
         }}
       >
         {iller.map((il, index) => (
@@ -64,9 +67,6 @@ function Cities() {
           </div>
         ))}
       </div>
-      <Link to='/'>
-        <span className='link-btn'>Go Home</span>
-      </Link>
     </div>
   );
 }

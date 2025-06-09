@@ -2,7 +2,6 @@ import { Link } from 'react-router';
 import PrayerTimesTable from '../components/PrayerTimesTable';
 import { useEffect, useState } from 'react';
 import Calendar from '../components/Calendar';
-import logo from '../../public/icon-192x192.png';
 
 function Home() {
   const [city, setcity] = useState('Go to cities');
@@ -27,12 +26,6 @@ function Home() {
         borderRadius: 11,
       }}
     >
-      <div className='top-bar'>
-        <img src={logo} alt='logo' width={55} height={55} />
-        <Link to='/settings'>
-          <span>🍎</span>
-        </Link>
-      </div>
       <Calendar />
       <PrayerTimesTable />
       <Link to='/cities'>

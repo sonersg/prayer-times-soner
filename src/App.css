@@ -23,9 +23,10 @@ body {
   padding: 0 1em;
   height: 100vh;
   display: flex;
-  /* align-items: center; */
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
-  padding: 1rem;
+  padding: 0 1em;
 
   /* background-image: url('https://picsum.photos/720/1480'); */
   background-image: url('https://images.pexels.com/photos/8071161/pexels-photo-8071161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
@@ -71,13 +72,16 @@ body {
   padding: 0 1em;
 }
 
-.link-btn {
+/* .link-btn {
   background-color: aqua;
   padding: 0.5em 1.5em;
   border-radius: 0.5em;
-}
+} */
 a {
   text-decoration: none;
+}
+a:hover {
+  opacity: 0.7;
 }
 
 .calendar-main {
@@ -125,14 +129,24 @@ a {
   background-color: #350068;
 }
 
-.top-bar {
+.navigation-bar {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* background-color: aqua; */
+  background-color: #350068dd;
   width: 100%;
+  padding: 0.3em;
 }
-.top-bar span {
+.navigation-bar span {
   font-size: 1.7rem;
   color: white;
+}
+
+.active {
+  /* background-color: #ffffff; */
+  /* border-radius: 55%; */
+  border-color: #ffffff;
+  border-width: 0 0 5px 0;
+  border-style: solid;
+  display: block;
 }
