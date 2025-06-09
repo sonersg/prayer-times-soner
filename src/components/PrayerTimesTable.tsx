@@ -1,16 +1,22 @@
 import { useEffect, useState } from 'react';
 import calculateArray from '../utils/calculate';
-import { getRemaining, getTouched } from '../utils/highlight';
+import {
+  getHighlightedIndex,
+  getRemaining,
+  getTouched,
+} from '../utils/highlight';
 
 function PrayerTimesTable() {
   const [arr, setarr] = useState<string[] | null>(null);
   const [remaining, setremaining] = useState('');
+  const [highlightIndex, sethighlightIndex] = useState(-1);
 
   useEffect(() => {
     const todaysArr = calculateArray(1)[0];
-    setarr(todaysArr);
 
+    setarr(todaysArr);
     setremaining(getRemaining(todaysArr));
+    sethighlightIndex(getHighlightedIndex(todaysArr));
 
     return () => {
       console.log('clear useeffect in PrayerTimesTable');
@@ -19,12 +25,14 @@ function PrayerTimesTable() {
 
   if (arr)
     return (
-      <div>
-        <h2 className='time-cell'>{remaining}</h2>
+      <main>
+        <h2 className='remaining'>{remaining}</h2>
         {prayerTimeLabels.map((label, index) => (
           <div
             key={index}
-            className='time-cell'
+            className={
+              highlightIndex === index ? 'time-cell highlight' : 'time-cell'
+            }
             onClick={() => setremaining(getTouched(arr[index]))}
           >
             <h2>{label}</h2>
@@ -35,7 +43,7 @@ function PrayerTimesTable() {
             </section>
           </div>
         ))}
-      </div>
+      </main>
     );
 }
 

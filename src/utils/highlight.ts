@@ -36,19 +36,20 @@ export function getRemaining(todaySarray: string[]) {
   return '--';
 }
 
-// export function getHighlightedIndex(todaySarray: string[]) {
-//   if (todaySarray.length < 6) return -1;
+export function getHighlightedIndex(todaySarray: string[]) {
+  // if (todaySarray.length < 6) return -1;
 
-//   const currentTime = moment().format('HH:mm');
-//   const currentTimeValue = +currentTime.replace(':', '');
-//   const ishaTimeValue = +todaySarray[5].replace(':', '');
-//   if (currentTimeValue >= ishaTimeValue) return -1;
+  const currentTime = getTime();
+  const currentTimeValue = +currentTime.replace(':', '');
+  const ishaTimeValue = +todaySarray[5].replace(':', '');
+  if (currentTimeValue >= ishaTimeValue) return -1;
 
-//   for (let i = 0; i < todaySarray.length; i++) {
-//     const prayerTimeValue = +todaySarray[i].replace(':', '');
-//     if (currentTimeValue <= prayerTimeValue) return i;
-//   }
-// }
+  for (let i = 0; i < todaySarray.length; i++) {
+    const prayerTimeValue = +todaySarray[i].replace(':', '');
+    if (currentTimeValue <= prayerTimeValue) return i;
+  }
+  return -1;
+}
 
 export function getTouched(touched: string) {
   const currentTime = getTime();

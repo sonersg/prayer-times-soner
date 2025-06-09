@@ -12,7 +12,7 @@
 }
 
 body {
-  background-color: #242424;
+  background-color: #350068;
 }
 
 /* 'https://images.pexels.com/photos/8071161/pexels-photo-8071161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; */
@@ -99,4 +99,26 @@ a {
   display: grid;
   place-items: center;
   margin-left: 11px;
+}
+
+.remaining {
+  color: #ffffff;
+  /* background-color: #350068; */
+  text-align: center;
+  border-radius: 1em;
+  /* padding: 0.7em 1.3em; */
+  transition: all ease-in-out 0.3s;
+}
+.remaining:hover,
+.remaining:focus {
+  color: black;
+  font-weight: bold;
+}
+.remaining:active {
+  transform: scale(1.3);
+}
+
+.highlight {
+  color: #ffffff;
+  background-color: #350068;
 }
