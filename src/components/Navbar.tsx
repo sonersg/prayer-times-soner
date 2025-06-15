@@ -1,30 +1,31 @@
 import { NavLink } from 'react-router';
+import logo from '../assets/icon-192x192.png';
 
 function Navbar() {
   return (
     <div className='navigation-bar'>
-      <div>
-        <NavLink
-          to='/'
-          className={({ isActive }) => [isActive ? 'active' : ''].join(' ')}
-        >
-          <img
-            src='../../public/icon-192x192.png'
-            alt='logo'
-            width={44}
-            height={44}
-          />
-        </NavLink>
-      </div>
+      <NavLink
+        to='/'
+        className={({ isActive }) => [isActive ? 'active' : ''].join(' ')}
+      >
+        <span>
+          <img src={logo} alt='logo' width={33} height={33} />
+        </span>
+      </NavLink>
 
-      <div>
-        <NavLink
-          to='/settings'
-          className={({ isActive }) => [isActive ? 'active' : ''].join(' ')}
-        >
-          <span>🍎</span>
-        </NavLink>
-      </div>
+      <NavLink
+        to='/apple'
+        className={({ isActive }) => [isActive ? 'active' : ''].join(' ')}
+      >
+        <span>🍎</span>
+      </NavLink>
+
+      <NavLink
+        to='/settings'
+        className={({ isActive }) => [isActive ? 'active' : ''].join(' ')}
+      >
+        <span>✨</span>
+      </NavLink>
     </div>
   );
 }

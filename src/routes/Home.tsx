@@ -18,18 +18,19 @@ function Home() {
     <div
       style={{
         display: 'flex',
-        flexGrow: 1,
         justifyContent: 'space-around',
         alignItems: 'center',
         flexDirection: 'column',
-        backgroundColor: '#55555533',
+        // backgroundColor: '#55555533',
         borderRadius: 11,
+        height: '100vh',
+        paddingBottom: 55,
       }}
     >
       <Calendar />
       <PrayerTimesTable />
       <Link to='/cities'>
-        <h2 className='link-btn'>{city}</h2>
+        <h2 className='remaining'>{city}</h2>
       </Link>
     </div>
   );

@@ -37,12 +37,13 @@ function Cities() {
     <div
       style={{
         display: 'flex',
-        flexGrow: 1,
+        // flexGrow: 1,
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
-        // padding: '1em',
-        backgroundColor: '#99999977',
+        height: '100vh',
+        paddingBottom: 55,
+        // backgroundColor: '#99999977',
       }}
     >
       <h1>Cities</h1>
@@ -52,7 +53,7 @@ function Cities() {
           // flex: 1,
           // padding: '2em 2em',
           height: '77vh',
-          minWidth: '66%',
+          minWidth: '88%',
         }}
       >
         {iller.map((il, index) => (

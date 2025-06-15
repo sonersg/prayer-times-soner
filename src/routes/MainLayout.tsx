@@ -3,7 +3,10 @@ import Navbar from '../components/Navbar';
 
 function MainLayout() {
   return (
-    <main className='layout-container'>
+    <main
+      className='layout-container'
+      // style={{ backgroundImage: 'url(https://picsum.photos/1480/1480)' }}
+    >
       <Outlet />
 
       <Navbar />
