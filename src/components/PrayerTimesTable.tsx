@@ -18,14 +18,20 @@ function PrayerTimesTable() {
     setremaining(getRemaining(todaysArr));
     sethighlightIndex(getHighlightedIndex(todaysArr));
 
+    const interval = setInterval(() => {
+      setremaining(getRemaining(todaysArr));
+      sethighlightIndex(getHighlightedIndex(todaysArr));
+    }, 3333);
+
     return () => {
       console.log('clear useeffect in PrayerTimesTable');
+      clearInterval(interval);
     };
   }, []);
 
   if (arr)
     return (
-      <main>
+      <main style={{ display: 'grid', placeItems: 'center' }}>
         <h2 className='remaining'>{remaining}</h2>
         {prayerTimeLabels.map((label, index) => (
           <div
@@ -36,11 +42,9 @@ function PrayerTimesTable() {
             onClick={() => setremaining(getTouched(arr[index]))}
           >
             <h2>{label}</h2>
-            <section>
-              {/* <h2>{bell[index] === '1' ? '🔔' : '⚫️'}</h2> */}
-              <h4>:</h4>
-              <h2>{arr[index]}</h2>
-            </section>
+            {/* <h2>{bell[index] === '1' ? '🔔' : '⚫️'}</h2> */}
+            <h4>:</h4>
+            <h2>{arr[index]}</h2>
           </div>
         ))}
       </main>
