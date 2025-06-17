@@ -8,9 +8,7 @@ function Navbar() {
         to='/'
         className={({ isActive }) => [isActive ? 'active' : ''].join(' ')}
       >
-        <span>
-          <img src={logo} alt='logo' width={33} height={33} />
-        </span>
+        <img src={logo} alt='logo' width={33} height={33} />
       </NavLink>
 
       <NavLink

@@ -39,7 +39,7 @@ function Cities() {
         display: 'flex',
         // flexGrow: 1,
         flexDirection: 'column',
-        justifyContent: 'flex-end',
+        // justifyContent: 'flex-end',
         alignItems: 'center',
         height: '100vh',
         paddingBottom: 55,
@@ -50,10 +50,10 @@ function Cities() {
       <div
         style={{
           overflow: 'auto',
-          // flex: 1,
+          flex: 1,
           // padding: '2em 2em',
-          height: '77vh',
-          minWidth: '88%',
+          // height: '77vh',
+          minWidth: '77%',
         }}
       >
         {iller.map((il, index) => (

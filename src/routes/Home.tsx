@@ -10,7 +10,7 @@ function Home() {
     const timeout = setTimeout(() => {
       const currentCity = localStorage.getItem('current-city');
       if (currentCity) setcity(currentCity);
-    }, 777);
+    }, 5555);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -24,13 +24,14 @@ function Home() {
         // backgroundColor: '#55555533',
         borderRadius: 11,
         height: '100vh',
+        overflow: 'auto',
         paddingBottom: 55,
       }}
     >
       <Calendar />
       <PrayerTimesTable />
       <Link to='/cities'>
-        <h2 className='remaining'>{city}</h2>
+        <h2>{city}</h2>
       </Link>
     </div>
   );

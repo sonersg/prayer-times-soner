@@ -36,15 +36,17 @@ function PrayerTimesTable() {
         {prayerTimeLabels.map((label, index) => (
           <div
             key={index}
-            className={
-              highlightIndex === index ? 'time-cell highlight' : 'time-cell'
-            }
+            className='time-cell'
             onClick={() => setremaining(getTouched(arr[index]))}
           >
-            <h2>{label}</h2>
+            <h2 className={highlightIndex === index ? 'remaining' : ''}>
+              {label}
+            </h2>
             {/* <h2>{bell[index] === '1' ? '🔔' : '⚫️'}</h2> */}
             <h4>:</h4>
-            <h2>{arr[index]}</h2>
+            <h2 className={highlightIndex === index ? 'remaining' : ''}>
+              {arr[index]}
+            </h2>
           </div>
         ))}
       </main>
