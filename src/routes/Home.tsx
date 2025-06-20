@@ -33,6 +33,7 @@ function Home() {
       <Link to='/cities'>
         <h2>{city}</h2>
       </Link>
+      {/* <button onClick={scheduleNotification}>schedule a notification</button> */}
     </div>
   );
 }
