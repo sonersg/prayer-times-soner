@@ -7,7 +7,7 @@
 }
 
 * {
-  padding: 0;
+  /* padding: 0; */
   margin: 0;
   box-sizing: border-box;
 }
@@ -51,13 +51,10 @@ body {
 }
 
 .time-cell {
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   transition: all 0.7s;
-  width: 233px;
+  width: 255px;
   cursor: pointer;
   color: antiquewhite;
   /* background-color: aqua; */
@@ -67,7 +64,6 @@ body {
   font-size: 1.3rem;
 }
 .time-cell > h2 {
-  /* font-family: 'Courier New', Courier; */
   background-color: #333333aa;
   border-radius: 0.5em;
   padding: 0.3em 0;
@@ -153,6 +149,53 @@ a h2 {
   display: block;
   padding-bottom: 0.5em;
 }
+
+/* ************************** modal ********************/
+/* ************************** modal ********************/
+/* ************************** modal ********************/
+.main-modal {
+  height: 99vh;
+  width: 99%;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  z-index: 11;
+  background-color: #00ffff33;
+  color: white;
+}
+.modal-inner-container {
+  background-color: #002222bb;
+  width: 88%;
+  max-width: 555px;
+  padding: 1em;
+  border-radius: 11px;
+  text-align: center;
+}
+.modal-inner-container button {
+  min-width: 111px;
+}
+.spinner-container {
+  height: 111px;
+  /* width: 99%; */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  margin: 1em 0;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.spinner-container h3 {
+  padding: 1em;
+  text-align: center;
+  border-bottom: 3px solid white;
+  scroll-snap-align: center;
+  cursor: pointer;
+}
+/* ************************** modal ********************/
+/* ************************** modal ********************/
+/* ************************** modal ********************/
 
 @keyframes colorChange {
   0% {

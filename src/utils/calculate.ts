@@ -5,29 +5,56 @@ const timeZone = new Date().getTimezoneOffset() / -60;
 export default function calculateArray(size: number, start: number = 0) {
   console.log('Calculate function called', timeZone);
 
-  let prayTimes = new PrayTimes('Turkiye');
-  const calculationMethod = localStorage.getItem('calculation-method');
+  let prayTimes = new PrayTimes();
 
-  if (calculationMethod === 'Custom') {
-    // Adjust calculation angles
-    // prayTimes.adjust({
-    //   fajr: 18,
-    //   isha: 17,
-    // });
-  } else if (calculationMethod) {
-    prayTimes = new PrayTimes(calculationMethod);
+  // Set calculation method from localStorage
+  const cm = localStorage.getItem('calculation-method');
+  if (cm && cm != 'Custom') prayTimes = new PrayTimes(cm);
+
+  // Adjust calculation angles
+  const fa = localStorage.getItem('fajr-angle');
+  const ia = localStorage.getItem('isha-angle');
+  if (fa && ia) {
+    prayTimes.adjust({
+      fajr: +fa,
+      isha: +ia,
+    });
   }
 
-  const tunes = localStorage.getItem('tunes');
-  if (tunes) {
-    // const parsedTunes = JSON.parse(tunes)
-    // Add an offset to the sunrise time (e.g., +10 minutes)
-    // prayTimes.tune({
-    //   sunrise: -7,
-    //   dhuhr: 5, // Add 5 minutes to dhuhr
-    //   asr: 4,
-    //   maghrib: 6,
-    // });
+  // Adjust tunes
+  const to = localStorage.getItem('tunes-object');
+
+  if (cm === 'Turkiye' && !to) {
+    prayTimes.tune({
+      sunrise: -7,
+      dhuhr: 5,
+      asr: 4,
+      maghrib: 6,
+    });
+  }
+
+  if (to) {
+    const parsedTunes = JSON.parse(to);
+    // Adjust offsets as number and minutes type
+    if (cm === 'Turkiye') {
+      prayTimes.tune({
+        fajr: +parsedTunes.fajr,
+        sunrise: +parsedTunes.sunrise - 7,
+        dhuhr: +parsedTunes.dhuhr + 5,
+        asr: +parsedTunes.asr + 4,
+        maghrib: +parsedTunes.maghrib + 6,
+        isha: +parsedTunes.isha,
+      });
+    } else {
+      prayTimes.tune({
+        fajr: +parsedTunes.fajr,
+        sunrise: +parsedTunes.sunrise,
+        dhuhr: +parsedTunes.dhuhr,
+        asr: +parsedTunes.asr,
+        maghrib: +parsedTunes.maghrib,
+        isha: +parsedTunes.isha,
+      });
+    }
   }
 
   const lat = localStorage.getItem('lat') || 37.066;
@@ -41,7 +68,6 @@ export default function calculateArray(size: number, start: number = 0) {
     const date = new Date();
     date.setDate(date.getDate() + i + start);
     // const iso = date.toISOString().slice(0, 10);
-    // console.log(iso);
     const times = prayTimes.getTimes(date, [+lat, +lon], timeZone);
     const valuesArray = Object.values(times);
     valuesArray.splice(8, 1); // remove midnight
@@ -53,7 +79,3 @@ export default function calculateArray(size: number, start: number = 0) {
 
   return arr;
 }
-
-// const lat = 37.066;
-// const long = 37.3781;
-// console.log(name(lat, long));

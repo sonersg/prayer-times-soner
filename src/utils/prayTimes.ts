@@ -336,16 +336,6 @@ export default class PrayTimes {
     for (const timeName in this.timeNames) {
       this.offset[timeName as keyof TimeOffsets] = 0;
     }
-
-    // Apply initial tunes for Turkiye method if selected
-    if (this.calcMethod === 'Turkiye') {
-      this.tune({
-        sunrise: -7,
-        dhuhr: 5,
-        asr: 4,
-        maghrib: 6,
-      });
-    }
   }
 
   //----------------------- Public Functions ------------------------
@@ -358,21 +348,6 @@ export default class PrayTimes {
     if (this.methods[method]) {
       this.adjust(this.methods[method].params);
       this.calcMethod = method;
-
-      // Apply specific tunes for Turkiye method if selected
-      if (this.calcMethod === 'Turkiye') {
-        this.tune({
-          sunrise: -7,
-          dhuhr: 5,
-          asr: 4,
-          maghrib: 6,
-        });
-      } else {
-        // Reset offsets if changing from Turkiye
-        for (const timeName in this.timeNames) {
-          this.offset[timeName as keyof TimeOffsets] = 0;
-        }
-      }
     } else {
       console.warn(`Method "${method}" not found. Using default method.`);
     }
