@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Modal from '../components/Modal';
+import Console from '../components/Console';
 
 function Settings() {
   const [method, setmethod] = useState('Turkiye');
@@ -44,34 +45,38 @@ function Settings() {
   };
 
   return (
-    <main style={{ display: 'grid', placeItems: 'center' }}>
+    <main style={{ display: 'grid', placeItems: 'center', flex: 1 }}>
       <h2>Settings</h2>
 
-      <label htmlFor='calculation-methods'>Choose a calculation method</label>
-      <section>
-        <select
-          name='calculation-methods'
-          id='calculation-methods'
-          value={method}
-          onChange={handleChange}
-        >
-          <option value='Egypt'>Egyptian General Authority of Survey</option>
-          <option value='Tehran'>
-            Institute of Geophysics, University of Tehran
-          </option>
-          <option value='ISNA'>Islamic Society of North America, ISNA</option>
-          <option value='MWL'>Muslim World League</option>
-          <option value='Jafari'>
-            Shia Ithna-Ashari, Leva Institute, Qum, Jafari
-          </option>
-          <option value='Turkiye'>Türkiye</option>
-          <option value='Makkah'>Umm Al-Qura University, Makkah</option>
-          <option value='Karachi'>
-            University of Islamic Sciences, Karachi
-          </option>
-          <option value='Custom'>Custom</option>
-        </select>
-      </section>
+      <Console />
+
+      <div>
+        <label htmlFor='calculation-methods'>Choose a calculation method</label>
+        <section>
+          <select
+            name='calculation-methods'
+            id='calculation-methods'
+            value={method}
+            onChange={handleChange}
+          >
+            <option value='Egypt'>Egyptian General Authority of Survey</option>
+            <option value='Tehran'>
+              Institute of Geophysics, University of Tehran
+            </option>
+            <option value='ISNA'>Islamic Society of North America, ISNA</option>
+            <option value='MWL'>Muslim World League</option>
+            <option value='Jafari'>
+              Shia Ithna-Ashari, Leva Institute, Qum, Jafari
+            </option>
+            <option value='Turkiye'>Türkiye</option>
+            <option value='Makkah'>Umm Al-Qura University, Makkah</option>
+            <option value='Karachi'>
+              University of Islamic Sciences, Karachi
+            </option>
+            <option value='Custom'>Custom</option>
+          </select>
+        </section>
+      </div>
 
       <Modal modalVisible={modalVisible} setmodalVisible={setmodalVisible}>
         <main

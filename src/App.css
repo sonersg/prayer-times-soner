@@ -59,10 +59,6 @@ body {
   color: antiquewhite;
   /* background-color: aqua; */
 }
-.time-cell:active {
-  /* transform: scale(1.2); */
-  font-size: 1.3rem;
-}
 .time-cell > h2 {
   background-color: #333333aa;
   border-radius: 0.5em;
@@ -123,15 +119,16 @@ a h2 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #350068bb;
-  padding: 0.5em 0 0 0;
-  border-radius: 2em 2em 0 0;
-  overflow: hidden;
+  /* background-color: #bcbcbcbc; */
+  /* padding: 0.5em 0 0 0; */
+  /* border-radius: 2em; */
+  /* overflow: hidden; */
+  /* height: 1em; */
 
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
 }
 .navigation-bar span {
   /* display: none; */
@@ -146,8 +143,8 @@ a h2 {
   border-color: #ffffff;
   border-width: 0 0 3px 0;
   border-style: solid;
-  display: block;
-  padding-bottom: 0.5em;
+  /* display: block; */
+  transform: scale(1.5);
 }
 
 /* ************************** modal ********************/
@@ -167,21 +164,23 @@ a h2 {
 }
 .modal-inner-container {
   background-color: #002222bb;
-  width: 88%;
-  max-width: 555px;
+  /* width: 88%;
+  max-width: 555px; */
   padding: 1em;
   border-radius: 11px;
   text-align: center;
 }
 .modal-inner-container button {
-  min-width: 111px;
+  min-width: 155px;
+  background-color: transparent;
+  color: white;
 }
 .spinner-container {
-  height: 111px;
+  height: 222px;
   /* width: 99%; */
   overflow-y: scroll;
   overflow-x: hidden;
-  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y mandatory; */
   margin: 1em 0;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -190,9 +189,26 @@ a h2 {
   padding: 1em;
   text-align: center;
   border-bottom: 3px solid white;
-  scroll-snap-align: center;
+  /* scroll-snap-align: center; */
   cursor: pointer;
+  font-weight: 100;
 }
+
+input {
+  font-size: 1rem;
+  background-color: rgba(9, 9, 9, 0.3);
+  border: none;
+  outline: none;
+  text-align: center;
+  padding: 0.5em;
+  border-radius: 1em;
+  border-bottom: solid 3px white;
+  color: white;
+}
+input:focus {
+  background-color: rgba(9, 9, 9, 0.5);
+}
+
 /* ************************** modal ********************/
 /* ************************** modal ********************/
 /* ************************** modal ********************/

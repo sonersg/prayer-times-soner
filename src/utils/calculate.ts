@@ -3,7 +3,7 @@ import PrayTimes from './prayTimes';
 const timeZone = new Date().getTimezoneOffset() / -60;
 
 export default function calculateArray(size: number, start: number = 0) {
-  console.log('Calculate function called', timeZone);
+  console.log('Calculate function called', size, start);
 
   let prayTimes = new PrayTimes();
 

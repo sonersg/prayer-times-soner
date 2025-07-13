@@ -67,3 +67,16 @@ export function getHijri(future: number = 0) {
 
   return hicri.hd + ' ' + hicriAylar[hicri.hm - 1] + ' ' + hicri.hy;
 }
+
+export function getHHmmss(s = false) {
+  const date = new Date();
+  let hour: number | string = date.getHours();
+  let minutes: number | string = date.getMinutes();
+  let seconds: number | string = date.getSeconds();
+
+  if (hour < 10) hour = `0${hour}`;
+  if (minutes < 10) minutes = `0${minutes}`;
+  if (seconds < 10) seconds = `0${seconds}`;
+
+  return s ? `${hour}:${minutes}:${seconds}` : `${hour}:${minutes}`;
+}

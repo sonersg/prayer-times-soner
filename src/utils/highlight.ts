@@ -1,14 +1,7 @@
-import { getTime } from '../components/Calendar';
-
-// const ishaMessage =
-//   storage.getString('isha-message') || `Güneş: ${calculateArray(2)[1][1]}`;
-// const isAlways = storage.getBoolean('is-always');
+import { getHHmmss } from './date';
 
 export function getRemaining(todaySarray: string[]) {
-  //   if (!todaySarray) return 'ah sana array';
-  //   if (!isAlways && isAlways != undefined) return ishaMessage;
-
-  const currentTime = getTime();
+  const currentTime = getHHmmss();
   const currentTimeValue = +currentTime.replace(':', '');
   const ishaTimeValue = +todaySarray[5].replace(':', '');
   if (currentTimeValue > ishaTimeValue) return 'ishaMessage';
@@ -39,7 +32,7 @@ export function getRemaining(todaySarray: string[]) {
 export function getHighlightedIndex(todaySarray: string[]) {
   // if (todaySarray.length < 6) return -1;
 
-  const currentTime = getTime();
+  const currentTime = getHHmmss();
   const currentTimeValue = +currentTime.replace(':', '');
   const ishaTimeValue = +todaySarray[5].replace(':', '');
   if (currentTimeValue >= ishaTimeValue) return -1;
@@ -52,7 +45,7 @@ export function getHighlightedIndex(todaySarray: string[]) {
 }
 
 export function getTouched(touched: string) {
-  const currentTime = getTime();
+  const currentTime = getHHmmss();
 
   const [currentHours, currentMinutes] = currentTime.split(':');
   const [touchedHours, touchedMinutes] = touched.split(':');

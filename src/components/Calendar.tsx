@@ -1,13 +1,13 @@
 import { memo, useEffect, useState } from 'react';
-import { getHijri, getTR } from '../utils/date';
+import { getHHmmss, getHijri, getTR } from '../utils/date';
 
 function Calendar() {
-  const [currentTime, setCurrentTime] = useState(getTime());
+  const [currentTime, setCurrentTime] = useState(getHHmmss());
 
   useEffect(() => {
     // update current time
     const interval = setInterval(() => {
-      setCurrentTime(getTime());
+      setCurrentTime(getHHmmss());
     }, 2222);
 
     // Clean up the interval when the component unmounts
@@ -29,14 +29,3 @@ function Calendar() {
 }
 
 export default memo(Calendar);
-
-export function getTime() {
-  const date = new Date();
-  let hour: number | string = date.getHours();
-  let minutes: number | string = date.getMinutes();
-
-  if (hour < 10) hour = `0${hour}`;
-  if (minutes < 10) minutes = `0${minutes}`;
-
-  return `${hour}:${minutes}`;
-}

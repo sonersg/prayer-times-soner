@@ -39,7 +39,6 @@ function PrayerTimesTable() {
   function handleDoubleClick(label: string) {
     setmodalVisible(true);
     settunesObject({ ...tunesObject, label: label });
-    localStorage.setItem('tunes-object', JSON.stringify(tunesObject));
   }
 
   function handleSpinnerClick(min: string) {
