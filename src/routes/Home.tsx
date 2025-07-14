@@ -23,9 +23,9 @@ function Home() {
         flexDirection: 'column',
         // backgroundColor: '#55555533',
         borderRadius: 11,
-        height: '100vh',
+        // height: '100vh',
+        flex: 1,
         overflow: 'auto',
-        paddingBottom: 55,
       }}
     >
       <Calendar />

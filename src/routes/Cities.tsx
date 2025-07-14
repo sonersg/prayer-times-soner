@@ -38,11 +38,11 @@ function Cities() {
       style={{
         display: 'flex',
         // flexGrow: 1,
+        flex: 1,
+        // height: '100vh',
         flexDirection: 'column',
-        // justifyContent: 'flex-end',
+        justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh',
-        paddingBottom: 55,
         // backgroundColor: '#99999977',
       }}
     >
@@ -50,9 +50,9 @@ function Cities() {
       <div
         style={{
           overflow: 'auto',
-          flex: 1,
+          // flex: 1,
           // padding: '2em 2em',
-          // height: '77vh',
+          height: '77vh',
           minWidth: '77%',
         }}
       >

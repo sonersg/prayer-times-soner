@@ -21,7 +21,7 @@ body {
 
 .layout-container {
   background-color: var(--color-primary);
-  padding: 0 1em;
+  padding: 0 1em 3em 1em;
   height: 100vh;
   /* overflow: auto; */
   display: flex;
@@ -30,8 +30,8 @@ body {
   width: 100%;
   position: relative;
 
-  /* background-image: url('https://picsum.photos/720/1480'); */
-  background-image: url('https://images.pexels.com/photos/8071161/pexels-photo-8071161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  background-image: url('https://picsum.photos/720/1480');
+  /* background-image: url('https://images.pexels.com/photos/8071161/pexels-photo-8071161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -126,7 +126,7 @@ a h2 {
   /* height: 1em; */
 
   position: absolute;
-  bottom: 5%;
+  bottom: 2%;
   left: 5%;
   right: 5%;
 }
