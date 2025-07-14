@@ -51,7 +51,9 @@ function Settings() {
       <Console />
 
       <div>
-        <label htmlFor='calculation-methods'>Choose a calculation method</label>
+        <h3 style={{ color: '#eee', textAlign: 'center' }}>
+          Calculation Methods:
+        </h3>
         <section>
           <select
             name='calculation-methods'
@@ -81,14 +83,9 @@ function Settings() {
       <Modal modalVisible={modalVisible} setmodalVisible={setmodalVisible}>
         <main
           className='modal-inner-container'
-          onClick={(e) => e.stopPropagation()}
+          onClick={e => e.stopPropagation()}
         >
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-around',
-            }}
-          >
+          <div>
             <h3>Fajr Angle: {fajrAngle} °</h3>
             <h3>Isha Angle: {ishaAngle} °</h3>
           </div>
@@ -101,30 +98,22 @@ function Settings() {
             }}
           >
             <div className='spinner-container'>
-              {degrees.map((degree) => (
-                <h3
-                  key={degree}
-                  onClick={(e) => handleClick(e, degree, 'fajr')}
-                >
+              {degrees.map(degree => (
+                <h3 key={degree} onClick={e => handleClick(e, degree, 'fajr')}>
                   {degree} °
                 </h3>
               ))}
             </div>
             <div className='spinner-container'>
-              {degrees.map((degree) => (
-                <h3
-                  key={degree}
-                  onClick={(e) => handleClick(e, degree, 'isha')}
-                >
+              {degrees.map(degree => (
+                <h3 key={degree} onClick={e => handleClick(e, degree, 'isha')}>
                   {degree} °
                 </h3>
               ))}
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <button onClick={() => setmodalVisible(false)}>OK</button>
-          </div>
+          <button onClick={() => setmodalVisible(false)}>OK</button>
         </main>
       </Modal>
     </main>

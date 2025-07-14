@@ -147,6 +147,12 @@ a h2 {
   transform: scale(1.5);
 }
 
+select {
+  padding: 0.5em;
+  /* text-align: center; */
+  margin-top: 11px;
+}
+
 /* ************************** modal ********************/
 /* ************************** modal ********************/
 /* ************************** modal ********************/
@@ -159,11 +165,11 @@ a h2 {
   position: absolute;
   top: 0;
   z-index: 11;
-  background-color: #00ffff33;
+  background-color: #23232399;
   color: white;
 }
 .modal-inner-container {
-  background-color: #002222bb;
+  background-color: #232323bb;
   /* width: 88%;
   max-width: 555px; */
   padding: 1em;
@@ -171,7 +177,7 @@ a h2 {
   text-align: center;
 }
 .modal-inner-container button {
-  min-width: 155px;
+  min-width: 133px;
   background-color: transparent;
   color: white;
 }
