@@ -6,6 +6,8 @@ import Calendar from '../components/Calendar';
 function Home() {
   const [city, setcity] = useState('Go to cities');
 
+  // console.log('Home.tsx is called');
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       const currentCity = localStorage.getItem('current-city');

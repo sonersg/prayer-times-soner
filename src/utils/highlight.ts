@@ -1,10 +1,14 @@
 import { getHHmmss } from './date';
 
-export function getRemaining(todaySarray: string[]) {
+const ishaMessage = localStorage.getItem('isha-message');
+
+export function getRemaining(todaySarray: string[]): string {
+  if (todaySarray.length < 6) return 'array.length < 6';
   const currentTime = getHHmmss();
   const currentTimeValue = +currentTime.replace(':', '');
   const ishaTimeValue = +todaySarray[5].replace(':', '');
-  if (currentTimeValue > ishaTimeValue) return 'ishaMessage';
+  if (currentTimeValue > ishaTimeValue)
+    return ishaMessage || `Güneş: ${todaySarray[1]}`;
 
   for (let i = 0; i < todaySarray.length; i++) {
     const prayerTimeValue = +todaySarray[i].replace(':', '');

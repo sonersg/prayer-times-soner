@@ -3,7 +3,6 @@ import { useState } from 'react';
 function Console() {
   const [value, setvalue] = useState('');
 
-  // handleKeyDown function
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let define = ['', ''];
@@ -15,7 +14,7 @@ function Console() {
       setvalue('');
     } else if (define[0].trim().toLowerCase() === 'isha message') {
       // ISHA MESSAGE
-      // storage.set('isha-message', define[1].trim());
+      localStorage.setItem('isha-message', define[1].trim());
       setvalue('');
     } else if (value.trim().toLowerCase() === 'soner') {
       setvalue('Güçlü');
