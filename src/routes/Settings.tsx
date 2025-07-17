@@ -7,14 +7,17 @@ function Settings() {
   const [modalVisible, setmodalVisible] = useState(false);
   const [fajrAngle, setFajrAngle] = useState('0');
   const [ishaAngle, setIshaAngle] = useState('0');
+  const [color, setcolor] = useState('#bfe114');
 
   useEffect(() => {
     const cm = localStorage.getItem('calculation-method');
     const fa = localStorage.getItem('fajr-angle');
     const ia = localStorage.getItem('isha-angle');
+    const cp = localStorage.getItem('color-primary');
     if (cm) setmethod(cm);
     if (fa) setFajrAngle(fa);
     if (ia) setIshaAngle(ia);
+    if (cp) setcolor(cp);
   }, []);
 
   function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
@@ -44,17 +47,28 @@ function Settings() {
     }
   };
 
+  function handleBlur(e: React.FocusEvent<HTMLInputElement, Element>) {
+    // console.log('final color', e.target.value);
+    document.documentElement.style.setProperty(
+      '--color-primary',
+      e.target.value
+    );
+    localStorage.setItem('color-primary', e.target.value);
+  }
+
   return (
     <main style={{ display: 'grid', placeItems: 'center', flex: 1 }}>
       <h2>Settings</h2>
 
-      <Console />
+      <section>
+        <Console />
+      </section>
 
-      <div>
+      <section>
         <h3 style={{ color: '#eee', textAlign: 'center' }}>
           Calculation Methods:
         </h3>
-        <section>
+        <div>
           <select
             name='calculation-methods'
             id='calculation-methods'
@@ -77,8 +91,20 @@ function Settings() {
             </option>
             <option value='Custom'>Custom</option>
           </select>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      <section>
+        <div className='flex-row'>
+          <input
+            type='color'
+            value={color}
+            onChange={e => setcolor(e.target.value)}
+            onBlur={handleBlur}
+          />
+          <h3 style={{ color: '#eee' }}>{color}</h3>
+        </div>
+      </section>
 
       <Modal modalVisible={modalVisible} setmodalVisible={setmodalVisible}>
         <main

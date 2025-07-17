@@ -1,4 +1,4 @@
-#root {
+:root {
   max-width: 999px;
   margin: 0 auto;
   /* padding: 2rem; */
@@ -13,7 +13,15 @@
 }
 
 body {
-  background-color: #350068;
+  background-color: var(--color-primary);
+  transition: background-color 1s;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
 }
 
 /* 'https://images.pexels.com/photos/8071161/pexels-photo-8071161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; */
@@ -200,7 +208,7 @@ select {
   font-weight: 100;
 }
 
-input {
+input[type='text'] {
   font-size: 1rem;
   background-color: rgba(9, 9, 9, 0.3);
   border: none;
@@ -211,7 +219,7 @@ input {
   border-bottom: solid 3px white;
   color: white;
 }
-input:focus {
+input[type='text']:focus {
   background-color: rgba(9, 9, 9, 0.5);
 }
 
