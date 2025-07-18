@@ -1,9 +1,17 @@
 import { Outlet } from 'react-router';
 import Navbar from '../components/Navbar';
+import { useEffect } from 'react';
 
 const innerWidth = window.innerWidth;
 
 function MainLayout() {
+  // console.log('MainLayout.tsx is called');
+
+  useEffect(() => {
+    const cp = localStorage.getItem('color-primary');
+    if (cp) document.documentElement.style.setProperty('--color-primary', cp);
+  }, []);
+
   return (
     <main
       className='layout-container'

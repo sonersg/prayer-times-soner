@@ -12,7 +12,7 @@ function Home() {
     const timeout = setTimeout(() => {
       const currentCity = localStorage.getItem('current-city');
       if (currentCity) setcity(currentCity);
-    }, 5555);
+    }, 4444);
     return () => clearTimeout(timeout);
   }, []);
 

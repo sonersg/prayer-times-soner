@@ -1,8 +1,4 @@
 :root {
-  max-width: 999px;
-  margin: 0 auto;
-  /* padding: 2rem; */
-  /* text-align: center; */
   --color-primary: #350068;
 }
 
@@ -28,6 +24,8 @@ body {
 /* 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; */
 
 .layout-container {
+  max-width: 999px;
+  margin: 0 auto;
   background-color: var(--color-primary);
   padding: 0 1em 3em 1em;
   height: 100vh;

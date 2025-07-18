@@ -40,13 +40,17 @@ function Console() {
       localStorage.clear();
       setvalue('');
     } else if (value.trim()[0] === '#') {
-      // SET THEME-COLOR
-      // const hexColorPattern = /^#([A-Fa-f0-9]{6})$/;
-      // const isValidColor = hexColorPattern.test(value.trim());
-      // if (isValidColor) {
-      //   storage.set('theme-color', value.trim());
-      //   setvalue('');
-      // }
+      // SET PRIMARY COLOR
+      const hexColorPattern = /^#([A-Fa-f0-9]{6})$/;
+      const isValidColor = hexColorPattern.test(value.trim());
+      if (isValidColor) {
+        document.documentElement.style.setProperty(
+          '--color-primary',
+          value.trim()
+        );
+        localStorage.setItem('color-primary', value.trim());
+        setvalue('');
+      }
     } else if (define[0].trim().toLowerCase() === 'lat-lon') {
       // LATITUDE AND LONGITUDE
       //   const [lat, lon] = define[1].trim().split('-');
