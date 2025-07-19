@@ -30,10 +30,7 @@ function PrayerTimesTable() {
       sethighlightIndex(getHighlightedIndex(todaysArr));
     }, 3333);
 
-    return () => {
-      console.log('clear useeffect in PrayerTimesTable');
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   function handleDoubleClick(label: string) {
@@ -63,66 +60,67 @@ function PrayerTimesTable() {
     setarr(calculateArray(1)[0]);
   }
 
-  if (arr)
-    return (
-      <main style={{ display: 'grid', placeItems: 'center' }}>
-        <h2 className='remaining'>{remaining}</h2>
-        {prayerTimeLabels.map((label, index) => (
-          <div
-            key={index}
-            className='time-cell'
-            onClick={() => setremaining(getTouched(arr[index]))}
+  if (!arr) return <p>Loading...</p>;
+
+  return (
+    <main style={{ display: 'grid', placeItems: 'center' }}>
+      <h2 className='remaining'>{remaining}</h2>
+      {prayerTimeLabels.map((label, index) => (
+        <div
+          key={index}
+          className='time-cell'
+          onClick={() => setremaining(getTouched(arr[index]))}
+        >
+          <h2
+            className={highlightIndex === index ? 'remaining' : ''}
+            onDoubleClick={() => setTR(prev => !prev)}
           >
-            <h2
-              className={highlightIndex === index ? 'remaining' : ''}
-              onDoubleClick={() => setTR((prev) => !prev)}
-            >
-              {TR ? getTurkish(index) : label}
-            </h2>
-            {/* <h2>{bell[index] === '1' ? '🔔' : '⚫️'}</h2> */}
-            <h4>:</h4>
-            <h2
-              className={highlightIndex === index ? 'remaining' : ''}
-              onDoubleClick={() => handleDoubleClick(label)}
-            >
-              {arr[index]}
-            </h2>
+            {TR ? getTurkish(index) : label}
+          </h2>
+          {/* <h2>{bell[index] === '1' ? '🔔' : '⚫️'}</h2> */}
+          <h4>:</h4>
+          <h2
+            className={highlightIndex === index ? 'remaining' : ''}
+            onDoubleClick={() => handleDoubleClick(label)}
+          >
+            {arr[index]}
+          </h2>
+        </div>
+      ))}
+
+      <Modal modalVisible={modalVisible} setmodalVisible={setmodalVisible}>
+        <main
+          className='modal-inner-container'
+          onClick={e => e.stopPropagation()}
+        >
+          <h3>
+            {tunesObject.label}:{' '}
+            {
+              tunesObject[
+                tunesObject.label.toLowerCase() as keyof typeof tunesObject
+              ]
+            }{' '}
+            min
+          </h3>
+
+          <div>
+            <div className='spinner-container'>
+              {mins.map(min => (
+                <h3 key={min} onClick={() => handleSpinnerClick(min)}>
+                  {min} min
+                </h3>
+              ))}
+            </div>
           </div>
-        ))}
 
-        <Modal modalVisible={modalVisible} setmodalVisible={setmodalVisible}>
-          <main
-            className='modal-inner-container'
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3>
-              {tunesObject.label}:{' '}
-              {
-                tunesObject[
-                  tunesObject.label.toLowerCase() as keyof typeof tunesObject
-                ]
-              }{' '}
-              min
-            </h3>
-
-            <div>
-              <div className='spinner-container'>
-                {mins.map((min) => (
-                  <h3 key={min} onClick={() => handleSpinnerClick(min)}>
-                    {min} min
-                  </h3>
-                ))}
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <button onClick={handleResetOffsets}>RESET OFFSETS</button>
-              <button onClick={() => setmodalVisible(false)}>OK</button>
-            </div>
-          </main>
-        </Modal>
-      </main>
-    );
+          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <button onClick={handleResetOffsets}>RESET OFFSETS</button>
+            <button onClick={() => setmodalVisible(false)}>OK</button>
+          </div>
+        </main>
+      </Modal>
+    </main>
+  );
 }
 
 export default PrayerTimesTable;

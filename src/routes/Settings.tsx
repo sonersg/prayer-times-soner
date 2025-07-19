@@ -9,6 +9,8 @@ function Settings() {
   const [ishaAngle, setIshaAngle] = useState('0');
   const [color, setcolor] = useState('#bfe114');
 
+  // console.log('Settings.tsx is called');
+
   useEffect(() => {
     const cm = localStorage.getItem('calculation-method');
     const fa = localStorage.getItem('fajr-angle');
