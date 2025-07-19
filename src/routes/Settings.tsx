@@ -63,10 +63,6 @@ function Settings() {
       <h2>Settings</h2>
 
       <section>
-        <Console />
-      </section>
-
-      <section>
         <h3 style={{ color: '#eee', textAlign: 'center' }}>
           Calculation Methods:
         </h3>
@@ -94,6 +90,10 @@ function Settings() {
             <option value='Custom'>Custom</option>
           </select>
         </div>
+      </section>
+
+      <section>
+        <Console />
       </section>
 
       <section>

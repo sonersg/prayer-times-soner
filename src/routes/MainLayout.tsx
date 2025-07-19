@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 
 const innerWidth = window.innerWidth;
 const routes = ['/', '/apple', '/settings'];
-const threshold = 77; // Minimum swipe distance in pixels
+const threshold = 55; // Minimum swipe distance in pixels
 let currentIteration = 0;
 
 function MainLayout() {
@@ -19,7 +19,9 @@ function MainLayout() {
   useEffect(() => {
     const cp = localStorage.getItem('color-primary');
     if (cp) document.documentElement.style.setProperty('--color-primary', cp);
+  }, []);
 
+  useEffect(() => {
     const element = mainRef.current;
     if (!element) return;
 
@@ -62,7 +64,7 @@ function MainLayout() {
       element.removeEventListener('touchstart', handleTouchStart);
       element.removeEventListener('touchend', handleTouchEnd);
     };
-  }, []);
+  }, [location.pathname]);
 
   return (
     <main
