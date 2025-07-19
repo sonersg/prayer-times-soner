@@ -1,19 +1,72 @@
-import { Outlet } from 'react-router';
+import { Outlet, useNavigate, useLocation } from 'react-router';
 import Navbar from '../components/Navbar';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 const innerWidth = window.innerWidth;
+const routes = ['/', '/apple', '/settings'];
+const threshold = 77; // Minimum swipe distance in pixels
+let currentIteration = 0;
 
 function MainLayout() {
+  const mainRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   // console.log('MainLayout.tsx is called');
 
   useEffect(() => {
     const cp = localStorage.getItem('color-primary');
     if (cp) document.documentElement.style.setProperty('--color-primary', cp);
+
+    const element = mainRef.current;
+    if (!element) return;
+
+    currentIteration = routes.indexOf(location.pathname);
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartX.current = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      touchEndX.current = e.changedTouches[0].clientX;
+      handleSwipe();
+    };
+
+    function onSwipeLeft() {
+      currentIteration++;
+      if (currentIteration > routes.length - 1) currentIteration = 0;
+      navigate(routes[currentIteration]);
+      // console.log('leftttttt', currentIteration);
+    }
+    function onSwipeRight() {
+      currentIteration--;
+      if (currentIteration < 0) currentIteration = routes.length - 1;
+      navigate(routes[currentIteration]);
+      // console.log('rightttt', currentIteration);
+    }
+
+    const handleSwipe = () => {
+      const difference = touchStartX.current - touchEndX.current;
+      if (Math.abs(difference) < threshold) return;
+      difference > 0 ? onSwipeLeft?.() : onSwipeRight?.();
+    };
+
+    // Add event listeners
+    element.addEventListener('touchstart', handleTouchStart, { passive: true });
+    element.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    // Cleanup function
+    return () => {
+      element.removeEventListener('touchstart', handleTouchStart);
+      element.removeEventListener('touchend', handleTouchEnd);
+    };
   }, []);
 
   return (
     <main
+      ref={mainRef}
       className='layout-container'
       style={innerWidth < 555 ? { backgroundImage: `url(${getImg()})` } : {}}
     >
