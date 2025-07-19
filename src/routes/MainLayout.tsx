@@ -1,20 +1,24 @@
-import { Outlet, useNavigate, useLocation } from 'react-router';
+import { Outlet } from 'react-router';
 import Navbar from '../components/Navbar';
 import { useEffect, useRef } from 'react';
 
 const innerWidth = window.innerWidth;
-const routes = ['/', '/apple', '/settings'];
-const threshold = 55; // Minimum swipe distance in pixels
+const ROUTES = ['/', '/apple', '/settings'];
+const THRESHOLD = 55; // Minimum swipe distance in pixels
 let currentIteration = 0;
+
+// Standalone navigation function (no hooks)
+const navigate = (path: string) => {
+  window.history.pushState({}, '', path);
+  window.dispatchEvent(new PopStateEvent('popstate'));
+};
 
 function MainLayout() {
   const mainRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
-  const navigate = useNavigate();
-  const location = useLocation();
 
-  // console.log('MainLayout.tsx is called');
+  // console.log('MainLayout.tsx is called', window.location.pathname);
 
   useEffect(() => {
     const cp = localStorage.getItem('color-primary');
@@ -24,8 +28,6 @@ function MainLayout() {
   useEffect(() => {
     const element = mainRef.current;
     if (!element) return;
-
-    currentIteration = routes.indexOf(location.pathname);
 
     const handleTouchStart = (e: TouchEvent) => {
       touchStartX.current = e.touches[0].clientX;
@@ -38,20 +40,20 @@ function MainLayout() {
 
     function onSwipeLeft() {
       currentIteration++;
-      if (currentIteration > routes.length - 1) currentIteration = 0;
-      navigate(routes[currentIteration]);
+      if (currentIteration > ROUTES.length - 1) currentIteration = 0;
+      navigate(ROUTES[currentIteration]);
       // console.log('leftttttt', currentIteration);
     }
     function onSwipeRight() {
       currentIteration--;
-      if (currentIteration < 0) currentIteration = routes.length - 1;
-      navigate(routes[currentIteration]);
+      if (currentIteration < 0) currentIteration = ROUTES.length - 1;
+      navigate(ROUTES[currentIteration]);
       // console.log('rightttt', currentIteration);
     }
 
     const handleSwipe = () => {
       const difference = touchStartX.current - touchEndX.current;
-      if (Math.abs(difference) < threshold) return;
+      if (Math.abs(difference) < THRESHOLD) return;
       difference > 0 ? onSwipeLeft?.() : onSwipeRight?.();
     };
 
@@ -64,7 +66,7 @@ function MainLayout() {
       element.removeEventListener('touchstart', handleTouchStart);
       element.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [location.pathname]);
+  }, []);
 
   return (
     <main
@@ -89,9 +91,9 @@ function getImg() {
     'https://images.pexels.com/photos/32319577/pexels-photo-32319577.jpeg?_gl=1*1sr579c*_ga*MTA3ODU0OTE2LjE3Mzg5MDQ2NjE.*_ga_8JE65Q40S6*czE3NTIwNzUxNjUkbzMkZzEkdDE3NTIwNzUxOTAkajM1JGwwJGgw';
   const bgImg3 =
     'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
-  const images = [bgImg1, bgImg2, bgImg3];
+  // const images = [bgImg1, bgImg2, bgImg3];
   const getDate = new Date().getDate();
-  if (getDate % 2 === 0) return images[0];
-  else if (getDate % 3 === 0) return images[1];
-  else return images[2];
+  if (getDate % 2 === 0) return bgImg1;
+  else if (getDate % 3 === 0) return bgImg2;
+  else return bgImg3;
 }

@@ -49,13 +49,10 @@ function Settings() {
     }
   };
 
-  function handleBlur(e: React.FocusEvent<HTMLInputElement, Element>) {
+  function handleColor() {
     // console.log('final color', e.target.value);
-    document.documentElement.style.setProperty(
-      '--color-primary',
-      e.target.value
-    );
-    localStorage.setItem('color-primary', e.target.value);
+    document.documentElement.style.setProperty('--color-primary', color);
+    localStorage.setItem('color-primary', color);
   }
 
   return (
@@ -98,13 +95,13 @@ function Settings() {
 
       <section>
         <div className='flex-row'>
+          <h3 style={{ color: '#eee' }}>{color}</h3>
           <input
             type='color'
             value={color}
             onChange={e => setcolor(e.target.value)}
-            onBlur={handleBlur}
           />
-          <h3 style={{ color: '#eee' }}>{color}</h3>
+          <button onClick={handleColor}>Apply</button>
         </div>
       </section>
 
