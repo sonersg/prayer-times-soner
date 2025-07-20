@@ -30,10 +30,12 @@ function MainLayout() {
     if (!element) return;
 
     const handleTouchStart = (e: TouchEvent) => {
+      mainRef.current?.classList.add('blur');
       touchStartX.current = e.touches[0].clientX;
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
+      mainRef.current?.classList.remove('blur');
       touchEndX.current = e.changedTouches[0].clientX;
       handleSwipe();
     };
