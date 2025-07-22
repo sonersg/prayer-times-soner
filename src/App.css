@@ -22,9 +22,9 @@ body {
 .blur {
   transform: scale(0.95);
   /* filter: blur(5px); */
-  /* filter:  grayscale(1); */
+  /* filter: grayscale(1); */
   /* filter: invert(1); */
-  filter: opacity(0.5) blur(5px);
+  /* filter: opacity(0.9); */
 }
 
 /* 'https://images.pexels.com/photos/8071161/pexels-photo-8071161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; */
@@ -42,7 +42,7 @@ body {
   justify-content: space-between;
   width: 100%;
   position: relative;
-  transition: all 1s;
+  transition: all 0.3s;
 
   background-image: url('https://picsum.photos/720/1480');
   /* background-image: url('https://images.pexels.com/photos/8071161/pexels-photo-8071161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); */

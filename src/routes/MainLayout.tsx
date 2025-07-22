@@ -33,11 +33,26 @@ function MainLayout() {
       mainRef.current?.classList.add('blur');
       touchStartX.current = e.touches[0].clientX;
     };
-
     const handleTouchEnd = (e: TouchEvent) => {
       mainRef.current?.classList.remove('blur');
       touchEndX.current = e.changedTouches[0].clientX;
       handleSwipe();
+    };
+
+    const handleMouseDown = (e: MouseEvent) => {
+      mainRef.current?.classList.add('blur');
+      touchStartX.current = e.clientX;
+    };
+    const handleMouseUp = (e: MouseEvent) => {
+      mainRef.current?.classList.remove('blur');
+      touchEndX.current = e.clientX;
+      handleSwipe();
+    };
+
+    const handleSwipe = () => {
+      const difference = touchStartX.current - touchEndX.current;
+      if (Math.abs(difference) < THRESHOLD) return;
+      difference > 0 ? onSwipeLeft?.() : onSwipeRight?.();
     };
 
     function onSwipeLeft() {
@@ -53,20 +68,19 @@ function MainLayout() {
       // console.log('rightttt', currentIteration);
     }
 
-    const handleSwipe = () => {
-      const difference = touchStartX.current - touchEndX.current;
-      if (Math.abs(difference) < THRESHOLD) return;
-      difference > 0 ? onSwipeLeft?.() : onSwipeRight?.();
-    };
-
-    // Add event listeners
+    // Touch events
     element.addEventListener('touchstart', handleTouchStart, { passive: true });
     element.addEventListener('touchend', handleTouchEnd, { passive: true });
+    // Mouse events for desktop
+    element.addEventListener('mousedown', handleMouseDown);
+    element.addEventListener('mouseup', handleMouseUp);
 
     // Cleanup function
     return () => {
       element.removeEventListener('touchstart', handleTouchStart);
       element.removeEventListener('touchend', handleTouchEnd);
+      element.removeEventListener('mousedown', handleMouseDown);
+      element.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
 

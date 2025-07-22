@@ -5,14 +5,11 @@ function Console() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     let define = ['', ''];
     if (value.includes('~')) define = value.trim().split('~');
 
-    if (value.trim().slice(2, 5) === 'dgg') {
-      // RELIGIOUS DAYS NIGHTS
-      //   storage.set('holy-days-nights', value.trim());
-      setvalue('');
-    } else if (define[0].trim().toLowerCase() === 'isha message') {
+    if (define[0].trim().toLowerCase() === 'isha message') {
       // ISHA MESSAGE
       localStorage.setItem('isha-message', define[1].trim());
       setvalue('');
@@ -30,9 +27,7 @@ function Console() {
       setvalue('');
     } else if (value.trim().toLowerCase() === 'defaults') {
       localStorage.removeItem('bg-img');
-      //   storage.delete('theme-color');
-      //   storage.delete('auto-location');
-      //   storage.delete('calculation-method');
+      localStorage.removeItem('color-primary');
       setvalue('');
       // BACKGROUND IMAGE END
     } else if (value.trim().toLowerCase() === 'i am sure to reset storage') {
@@ -53,10 +48,10 @@ function Console() {
       }
     } else if (define[0].trim().toLowerCase() === 'lat-lon') {
       // LATITUDE AND LONGITUDE
-      //   const [lat, lon] = define[1].trim().split('-');
-      //   storage.set('selected-city', 'Manuel Input');
-      //   storage.set('lat', +lat);
-      //   storage.set('lon', +lon);
+      const [lat, lon] = define[1].trim().split('-');
+      localStorage.setItem('current-city', 'Manuel Input');
+      localStorage.setItem('lat', lat);
+      localStorage.setItem('lon', lon);
       setvalue('');
     }
     // else {
