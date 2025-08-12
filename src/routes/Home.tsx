@@ -23,11 +23,11 @@ function Home() {
         justifyContent: 'space-around',
         alignItems: 'center',
         flexDirection: 'column',
-        // backgroundColor: '#55555533',
-        borderRadius: 11,
-        // height: '100vh',
-        flex: 1,
-        overflow: 'auto',
+        // backgroundColor: '#0e0',
+        // borderRadius: 11,
+        minHeight: '99vh',
+        margin: '33vh 0',
+        // flex: 1,
       }}
     >
       <Calendar />

@@ -16,8 +16,8 @@ export default defineConfig({
         name: 'Prayer Times Soner',
         short_name: 'PrayerTimes',
         description: 'A Progressive Web App built with Vite and React',
-        theme_color: '#350068',
-        background_color: '#350068',
+        theme_color: '#180047',
+        background_color: '#180047',
         display: 'standalone',
         start_url: '/',
         icons: [

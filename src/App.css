@@ -1,5 +1,5 @@
 :root {
-  --color-primary: #350068;
+  --color-primary: #180047;
 }
 
 * {
@@ -34,9 +34,10 @@ body {
   max-width: 999px;
   margin: 0 auto;
   background-color: var(--color-primary);
-  padding: 0 1em 3em 1em;
+  padding: 0 1em;
   height: 100vh;
-  /* overflow: auto; */
+  overflow-x: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -48,6 +49,9 @@ body {
   /* background-image: url('https://images.pexels.com/photos/8071161/pexels-photo-8071161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); */
   background-repeat: no-repeat;
   background-size: cover;
+}
+.layout-container::-webkit-scrollbar {
+  width: 0 !important; /* Chrome, Safari, Opera */
 }
 
 .cities-item {
@@ -112,9 +116,6 @@ a h2 {
 }
 
 .remaining {
-  /* color: #ffffff; */
-  /* background-color: #350068; */
-  /* text-align: center; */
   border-radius: 1em;
   padding: 0.3em 0.7em;
   /* transition: all ease-in-out 0.3s; */
@@ -139,10 +140,8 @@ a h2 {
   /* overflow: hidden; */
   /* height: 1em; */
 
-  position: absolute;
-  bottom: 2%;
-  left: 5%;
-  right: 5%;
+  position: sticky;
+  bottom: 3%;
 }
 .navigation-bar span {
   /* display: none; */
