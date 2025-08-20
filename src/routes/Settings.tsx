@@ -99,6 +99,7 @@ function Settings() {
           <input
             type='color'
             value={color}
+            onBlur={handleColor}
             onChange={e => setcolor(e.target.value)}
           />
           <button onClick={handleColor}>Apply</button>
