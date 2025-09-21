@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router';
 import { iller } from '../assets/iller';
 import getLocation from '../utils/location';
+import { useToastContext } from '../components/toast/ToastManagerContext';
 
 function Cities() {
   const navigate = useNavigate();
+  const { addToast } = useToastContext();
 
   async function handleClick(
     city: string,
@@ -20,6 +22,7 @@ function Cities() {
     if (city === 'Auto Locate') {
       const { res, latitude, longitude, accuracy } = await getLocation();
       if (res === 'success') {
+        addToast('Location found!', 'success', 3000);
         alert(
           `Latitude: ${latitude}\nLongitude: ${longitude}\nAccurasy: ${accuracy}`
         );
@@ -29,6 +32,7 @@ function Cities() {
         navigate(-1);
       } else {
         alert(res);
+        addToast(`Location Error: ${res}`, 'error', 5000);
       }
     }
   }

@@ -5,19 +5,22 @@ import Cities from './routes/Cities';
 import MainLayout from './routes/MainLayout';
 import Settings from './routes/Settings';
 import Apple from './routes/Apple';
+import { ToastProvider } from './components/toast/ToastManagerContext';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path='/' element={<Home />} />
-          <Route path='/cities' element={<Cities />} />
-          <Route path='/settings' element={<Settings />} />
-          <Route path='/apple' element={<Apple />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <ToastProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path='/' element={<Home />} />
+            <Route path='/cities' element={<Cities />} />
+            <Route path='/settings' element={<Settings />} />
+            <Route path='/apple' element={<Apple />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ToastProvider>
   );
 }
 

@@ -1,0 +1,86 @@
+.toasts-container {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  z-index: 1000;
+}
+
+.toast {
+  border-radius: 0.3em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateX(0em) scale(0.2);
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toast-in {
+  transform: translateX(1em) scale(1);
+  opacity: 1;
+}
+
+.toast-out {
+  transform: translateX(100vw);
+  opacity: 0;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toast-message {
+  flex: 1;
+  font-family: Roboto, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #ffebee;
+  padding: 0.2em 0 0.2em 0.7em;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  width: 1.2em;
+  height: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.toast-close:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+/* Toast types */
+.toast-info {
+  background-color: #1976d2;
+  border-left: 4px solid white;
+}
+.toast-success {
+  background-color: #2e7d32;
+  border-left: 4px solid white;
+}
+.toast-warning {
+  background-color: #f57c00;
+  border-left: 4px solid white;
+}
+.toast-error {
+  background-color: #d32f2f;
+  border-left: 4px solid white;
+}
